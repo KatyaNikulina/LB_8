@@ -9,31 +9,41 @@ using namespace std;
 
 int matrix_36()
 {
-    cout << "\n=== Задание 2: Matrix36 ===\n";
+    cout << "\n=== Task 2: Matrix36 ===\n";
 
-    // Имена файлов
+    // Імена файлів
     string filename = "matr_in_36.txt";
 
-    // Открываем файл для чтения
+    // Відкриваємо файл для читання
     ifstream inputFile(filename);
     if (!inputFile.is_open()) 
     {
-        cerr << "Ошибка открытия файла " << filename << endl;
+        cerr << "Error opening file " << filename << endl;
         return 1;
     }
 
-    // Читаем размер матрицы
+    // Читаємо розмір матриці
     int M_1, N_1;
     inputFile >> M_1 >> N_1;
 
     if (M_1 <= 0 || N_1 <= 0)
     {
-        cerr << "Ошибка: M и N должны быть положительными числами!\n";
+        cerr << "Error: M and N must be positive numbers!\n";
         inputFile.close();
         return 1;
     }
 
-    // Читаем элементы матрицы
+    int M_1, N_1;
+    inputFile >> M_1 >> N_1;
+
+    if (2 <= M_1 <= 20 || 2 <= N_1 <= 20)
+    {
+        cerr << "Error: M and N must be between 2 and 20!\n";
+        inputFile.close();
+        return 1;
+    }
+
+    // Читаємо елементи матриці
     vector<vector<int>> matrix(M_1, vector<int>(N_1));
     for (int i = 0; i < M_1; ++i)
     {
@@ -41,34 +51,34 @@ int matrix_36()
         {
             if (!(inputFile >> matrix[i][j]))
             {
-                cerr << "Ошибка чтения элемента матрицы [" << i << "][" << j << "]" << endl;
+                cerr << "Error reading matrix element [" << i << "][" << j << "]" << endl;
                 inputFile.close();
                 return 1;
             }
 
             if (matrix[i][j] < 0 || matrix[i][j] > 100)
             {
-                cerr << "Число в позиции [" << i << "][" << j << "] не входит в диапазон от 0 до 100!" << endl;
+                cerr << "The number at position [" << i << "][" << j << "] is not in the range from 0 to 100!" << endl;
                 inputFile.close();
                 return 1;
             }
         }
     }
 
-    // Закрываем входной файл
+    // Закриваємо вхідний файл
     inputFile.close();
 
     if (matrix.empty())
     {
-        cout << "Матрица пуста!\n";
+        cout << "The matrix is ​​empty!\n";
         return 1;
     }
 
-    // Создаем множество элементов первой строки
+    // Створюємо множину елементів першої строки
     unordered_set<int> firstRowSet(matrix[0].begin(), matrix[0].end());
     int count = 0;
 
-    // Сравниваем начиная со второй строки (индекс 1)
+    // Зрівнюємо починаючи з другої строки
     for (size_t i = 1; i < matrix.size(); ++i)
     {
         unordered_set<int> currentRowSet(matrix[i].begin(), matrix[i].end());
@@ -78,21 +88,21 @@ int matrix_36()
         }
     }
 
-    // Открываем тот же файл для дозаписи
+    // Відкриваємо той же файл для дозапису
     ofstream outputFile(filename, ios::app);
     if (!outputFile.is_open()) {
-        cerr << "Ошибка открытия файла для записи " << filename << endl;
+        cerr << "Error opening file for writing " << filename << endl;
         return 1;
     }
 
-    // Дописываем результат в конец файла
-    outputFile << "\nКоличество строк, похожих на первую: " << count << endl;
+    // Дописуємо результат в кінці файлу
+    outputFile << "\nNumber of lines similar to the first: " << count << endl;
 
-    // Закрываем выходной файл
+    // Закриваемо вихідний файл
     outputFile.close();
 
-    cout << "Количество строк, похожих на первую: " << count << "\n";
-    cout << "Результат дописан в тот же файл " << filename << endl;
+    cout << "Number of lines similar to the first: " << count << "\n";
+    cout << "Result appended to the same file " << filename << endl;
 
     return 0;
 }
