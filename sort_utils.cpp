@@ -25,9 +25,9 @@ void insertionSort(vector<double>& arr)
 int sort_11() 
 {
 
-    cout << "\n=== Задание 3: Sort11 ===\n";
+    cout << "\n=== Task 3: Sort11 ===\n";
 
-    // Имена файлов
+    // Імена файлів
     string inputFilename = "sort_in_11.txt";
     string outputFilename = "sort_out_11.txt";
 
@@ -52,6 +52,6 @@ int sort_11()
     }
     output.close();
 
-    cout << "Сортировка завершена. Результат в файле " << outputFilename << endl;
+    cout << "Sorting completed. Result in file " << outputFilename << endl;
     return 0;
 }
