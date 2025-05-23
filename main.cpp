@@ -11,12 +11,12 @@ int main()
 
     do
     {
-        cout << "\nВыберите задание:\n"
-            << "1. Array71\n"
-            << "2. Matrix36\n"
-            << "3. Sort11\n"
-            << "0. Выход\n"
-            << "Ваш выбор: ";
+        cout << "\n Select task:\n" 
+             << "1. Array71\n" 
+             << "2. Matrix 36\n" 
+             << "3. Sort11\n" 
+             << "0. Exit\n" 
+             << "Your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -31,10 +31,10 @@ int main()
             sort_11();
             break;
         case 0:
-            cout << "Выход из программы.\n";
+            cout << "Exiting the program.\n";
             break;
         default:
-            cout << "Неверный выбор! Попробуйте еще раз.\n";
+            cout << "Incorrect choice! Try again.\n";
         }
     } while (choice != 0);
 
