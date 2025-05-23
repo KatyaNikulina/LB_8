@@ -11,73 +11,73 @@ int array_71()
 {
     cout << "\n=== Задание 1: Array ===\n";
     
-    // Имена файлов
+    // Імена файлів
     string inputFilename = "array_in_71.txt";
     string outputFilename = "array_out_71.txt";
 
-    // Открываем входной файл
+    // Відриваємо вхідной файл
     ifstream inputFile(inputFilename);
     if (!inputFile.is_open()) 
     {
-        cerr << "Ошибка открытия файла " << inputFilename << endl;
+        cerr << "Error opening file " << inputFilename << endl;
         return 1;
     }
 
     int N;
     inputFile >> N;
 
-    // Проверка на корректность размера массива
+    // Перевірка на коректність розміру масиву
     if (N <= 0) 
     {
-        cerr << "Некорректный размер массива: " << N << endl;
+        cerr << "Incorrect array size: " << N << endl;
         inputFile.close();
         return 1;
     }
 
-    // Читаем элементы массива
+    // Читаемо елементи масиву
     vector<int> array(N);
     for (int i = 0; i < N; i++) 
     {
         if (!(inputFile >> array[i])) 
         {
-            cerr << "Ошибка чтения элемента массива с индексом " << i << endl;
+            cerr << "Error reading array element with index " << i << endl;
             inputFile.close();
             return 1;
         }
     }
 
-    // Закрываем входной файл
+    // Закриваємо вхідний файл
     inputFile.close();
 
-    // Меняем порядок элементов на обратный
+    // Змінюємо порядок елементів на зворотній
     reverse(array.begin(), array.end());
 
-    // Открываем выходной файл
+    // Відриваємо вихідний файл
     ofstream outputFile(outputFilename);
     if (!outputFile.is_open()) 
     {
-        cerr << "Ошибка открытия файла для записи " << outputFilename << endl;
+        cerr << "Error opening file for writing " << outputFilename << endl;
         return 1;
     }
 
-    // Записываем размер массива
+    // Записуємо розмір масиву
     outputFile << N << endl;
 
-    // Записываем элементы в обратном порядке
+    // Записуємо елементи у зворотному порядку
     for (int i = 0; i < N; i++) 
     {
         outputFile << array[i];
         if (i < N - 1) 
         {
-            outputFile << " "; // разделитель между элементами
+            outputFile << " ";
         }
     }
     outputFile << endl;
 
-    // Закрываем выходной файл
+    // Зачиняємо вихідний файл
     outputFile.close();
 
-    cout << "Массив в обратном порядке записан в файл " << outputFilename << endl;
+    cout << "The array is written to the file in reverse order. " << outputFilename << endl;
 
     return 0;
 }
