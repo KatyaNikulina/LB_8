@@ -32,13 +32,7 @@ int matrix_36()
         inputFile.close();
         return 1;
     }
-    if (2 <= M_1 <= 20 || 2 <= N_1 <= 20)
-    {
-        cerr << "Error: M and N must be between 2 and 20!\n";
-        inputFile.close();
-        return 1;
-    }
-
+   
     // Читаємо елементи матриці
     vector<vector<int>> matrix(M_1, vector<int>(N_1));
     for (int i = 0; i < M_1; ++i)
