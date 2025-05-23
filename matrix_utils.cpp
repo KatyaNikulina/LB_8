@@ -32,10 +32,6 @@ int matrix_36()
         inputFile.close();
         return 1;
     }
-
-    int M_1, N_1;
-    inputFile >> M_1 >> N_1;
-
     if (2 <= M_1 <= 20 || 2 <= N_1 <= 20)
     {
         cerr << "Error: M and N must be between 2 and 20!\n";
